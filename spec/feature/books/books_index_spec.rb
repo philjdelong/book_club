@@ -15,8 +15,8 @@ RSpec.describe "As a user" do
 
       @other_book = @phil_delong.books.create(
         title:            "The Other Book",
-        pages:            100,
-        publication_year: "2020"
+        pages:            50,
+        publication_year: "2017"
       )
       visit "/books"
     end
@@ -43,8 +43,8 @@ RSpec.describe "As a user" do
 
       expect(page).to have_content(@the_book.title)
       expect(page).to have_content(@other_book.title)
-      
-      expect(page).to have_content(@author.averag_pages)
+
+      expect(page).to have_content(@phil_delong.average_pages)
     end
   end
 end
