@@ -7,19 +7,44 @@ RSpec.describe "As a user" do
         name:             "Phil DeLong"
       )
 
-      @book = @phil_delong.books.create(
+      @the_book = @phil_delong.books.create(
         title:            "The Book",
+        pages:            100,
+        publication_year: "2020"
+      )
+
+      @other_book = @phil_delong.books.create(
+        title:            "The Other Book",
         pages:            100,
         publication_year: "2020"
       )
       visit "/books"
     end
 
-    it "i see all books with title pages year authors" do
-      expect(page).to have_content("#{@book.title}")
-      expect(page).to have_content("#{@book.pages}")
-      expect(page).to have_content("#{@book.publication_year}")
-      expect(page).to have_content("#{@phil_delong.name}")
+    it "i see all books with the title and pages and year and author" do
+      expect(page).to have_content(@the_book.title)
+      expect(page).to have_content(@the_book.pages)
+      expect(page).to have_content(@the_book.publication_year)
+      expect(page).to have_content(@phil_delong.name)
+
+      expect(page).to have_content(@other_book.title)
+      expect(page).to have_content(@other_book.pages)
+      expect(page).to have_content(@other_book.publication_year)
+      expect(page).to have_content(@phil_delong.name)
+
+    end
+
+    it "i click on each author name and go to author show page" do
+
+      click_on('Phil DeLong')
+      expect(current_path).to eq("/authors/#{@phil_delong.id}")
+
+      expect(page).to have_content(@phil_delong.name)
+
+      expect(page).to have_content(@the_book.title)
+      expect(page).to have_content(@other_book.title)
+      
+      expect(page).to have_content(@author.averag_pages)
     end
   end
 end
