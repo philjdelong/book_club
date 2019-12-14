@@ -1,0 +1,9 @@
+<h1><%= @author.name %> </h1>
+  <br>
+
+<% @author.books.each do |book| %>
+  <p><%= book.title %> </p>
+<% end %>
+  <br><br>
+
+<h3><%= @author.averag_pages %> </h3>
