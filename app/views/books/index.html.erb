@@ -6,5 +6,5 @@
     <p><%= book.pages %></p>
     <p><%= book.publication_year %></p>
   <% end %>
-  <p><%= author.name %></p>
+  <p><%= link_to "#{author.name}", "/authors/#{author.id}" %></p>
 <% end %>
