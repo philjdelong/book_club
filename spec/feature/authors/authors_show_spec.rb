@@ -1,5 +1,5 @@
 RSpec.describe "As a user" do
-  describe "when i visit artist show page", type: :feature do
+  describe "when i visit author show page", type: :feature do
     before :each do
 
       @phil_delong = Author.create(
