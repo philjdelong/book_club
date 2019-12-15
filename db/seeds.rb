@@ -9,8 +9,30 @@ phil_delong = Author.create(
   name:             "Phil DeLong"
 )
 
-book = phil_delong.books.create(
+courtney_newby = Author.create(
+  name:             "Courtney Newby"
+)
+
+the_book = phil_delong.books.create(
   title:            "The Book",
   pages:            100,
-  publication_year: "2020",
+  publication_year: "2020"
+)
+
+other_book = phil_delong.books.create(
+  title:            "The Other Book",
+  pages:            50,
+  publication_year: "2017"
+)
+
+courtneys_book = courtney_newby.books.create(
+  title:            "Not Your Book",
+  pages:            1234,
+  publication_year: "3019"
+)
+
+courtneys_other_book = courtney_newby.books.create(
+  title:            "Denfinitely Not Your Book...",
+  pages:            4321,
+  publication_year: "3020"
 )
