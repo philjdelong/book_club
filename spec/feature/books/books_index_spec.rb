@@ -25,26 +25,18 @@ RSpec.describe "As a user" do
       expect(page).to have_content(@the_book.title)
       expect(page).to have_content(@the_book.pages)
       expect(page).to have_content(@the_book.publication_year)
-      expect(page).to have_content(@phil_delong.name)
+      expect(page).to have_content(@the_book.author.name)
 
       expect(page).to have_content(@other_book.title)
       expect(page).to have_content(@other_book.pages)
       expect(page).to have_content(@other_book.publication_year)
-      expect(page).to have_content(@phil_delong.name)
+      expect(page).to have_content(@other_book.author.name)
 
     end
 
     it "i click on each author name and go to author show page" do
 
-      click_on('Phil DeLong')
-      expect(current_path).to eq("/authors/#{@phil_delong.id}")
-
-      expect(page).to have_content(@phil_delong.name)
-
-      expect(page).to have_content(@the_book.title)
-      expect(page).to have_content(@other_book.title)
-
-      expect(page).to have_content(@phil_delong.average_pages)
+      expect(page).to have_link('Phil DeLong')
     end
   end
 end
